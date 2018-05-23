@@ -3,7 +3,7 @@ package dao;
 public class Event {
 
     /**
-     * Constructor for the EventResult Dao
+     * Constructor for the Event Dao
      */
     public Event() {
     }

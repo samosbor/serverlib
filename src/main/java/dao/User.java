@@ -37,12 +37,10 @@ public class User {
         try (Connection conn = this.connect()) {
             if (conn != null) {
                 DatabaseMetaData meta = conn.getMetaData();
-                System.out.println("The driver name is " + meta.getDriverName());
                 System.out.println("A new database has been created.");
             }
 
             String sql = "CREATE TABLE IF NOT EXISTS \"User\" ( `Username` TEXT NOT NULL UNIQUE, `Password` TEXT NOT NULL, `Email` TEXT NOT NULL, `FirstName` TEXT NOT NULL, `LastName` TEXT NOT NULL, `Gender` TEXT NOT NULL CHECK(Gender == \"m\" OR Gender == \"f\"), `PersonID` TEXT NOT NULL, PRIMARY KEY(`Username`), FOREIGN KEY(`PersonID`) REFERENCES `Person`(`PersonID`) )";
-            System.out.println(sql);
 
             Statement stmt = conn.createStatement();
             // create a new table
@@ -56,7 +54,6 @@ public class User {
 
     private Connection connect() {
         String filePath = new File("").getAbsolutePath() + "\\mydata.db";
-        System.out.println(filePath);
         String url = "jdbc:sqlite:" + filePath;
         try {
             Class.forName("org.sqlite.JDBC");
@@ -96,7 +93,6 @@ public class User {
         sb.append("'" + user.getPersonID() + "'");
         sb.append(")");
         String sql = sb.toString();
-        System.out.println(sql);
         try (Connection conn = this.connect();
              Statement pstmt = conn.createStatement()) {
             pstmt.execute(sql);
@@ -116,7 +112,6 @@ public class User {
      */
     public void removeUser(model.User user) {
         String sqlDel = "DELETE FROM User WHERE Username = \"" + user.getUsername() + "\"";
-        System.out.println(sqlDel);
         try (Connection conn = this.connect();
              Statement stmt = conn.createStatement()) {
             stmt.execute(sqlDel);
@@ -134,7 +129,6 @@ public class User {
      */
     public model.User getUser(String username) {
         String sqlGet = "SELECT * FROM User WHERE Username = \"" + username + "\"";
-        System.out.println(sqlGet);
         try (Connection conn = this.connect();
              Statement stmt = conn.createStatement()) {
             ResultSet res = stmt.executeQuery(sqlGet);
@@ -147,7 +141,6 @@ public class User {
             String personID = res.getString("personID");
             model.User outUser = new model.User(myusername, password, email, firstName, lastName, gender, personID);
             conn.close();
-            System.out.println(outUser.toString());
             return outUser;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
