@@ -9,14 +9,18 @@ public class AuthorizationToken {
      * An authorization token
      */
     String token;
+    String user;
+
+
 
     /**
      * The constructor for an authorization token
      *
      * @param token
      */
-    public AuthorizationToken(String token) {
+    public AuthorizationToken(String token, String user) {
         this.token = token;
+        this.user = user;
     }
 
     /**
@@ -35,6 +39,14 @@ public class AuthorizationToken {
      */
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 
     /**

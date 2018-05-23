@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class Person {
 
@@ -156,5 +157,33 @@ public class Person {
             System.out.println(e.getMessage());
         }
         this.createTable();
+    }
+
+    public ArrayList<model.Person> getAllFamily(model.AuthorizationToken token){
+        String currentUsername = token.getUser();
+        dao.User userDao = new dao.User();
+        model.User currentUser = userDao.getUser(currentUsername);
+        String currentPersonId = currentUser.getPersonID();
+        model.Person currentPerson = this.getPerson(currentPersonId);
+
+        ArrayList<model.Person> initialList = new ArrayList<>();
+        return allFamilyDFS(currentPerson, initialList);
+
+    }
+
+    private ArrayList<model.Person> allFamilyDFS(model.Person person, ArrayList<model.Person> list){
+        if(!list.contains(person)){
+            list.add(person);
+        }
+        while(person.getFather() != null){
+            allFamilyDFS(getPerson(person.getFather()),list);
+        }
+        while(person.getMother() != null){
+            allFamilyDFS(getPerson(person.getMother()),list);
+        }
+        while(person.getSpouse() != null){
+            allFamilyDFS(getPerson(person.getSpouse()),list);
+        }
+        return list;
     }
 }
