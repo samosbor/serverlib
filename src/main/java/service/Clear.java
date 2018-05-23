@@ -15,10 +15,11 @@ public class Clear {
 
     /**
      * The function to clear ALL data from the database, including user accounts, auth tokens, and
-     generated person and event data. Returns a clear result object.
+     * generated person and event data. Returns a clear result object.
+     *
      * @return
      */
-    public ClearResult clear(){
+    public ClearResult clear() {
         return null;
     }
 }

@@ -24,6 +24,7 @@ public class RegisterResult {
 
     /**
      * The constructor for the register response object
+     *
      * @param authToken
      * @param username
      * @param personID

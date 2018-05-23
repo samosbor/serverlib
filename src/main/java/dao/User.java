@@ -1,4 +1,5 @@
 package dao;
+
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -15,10 +16,10 @@ public class User {
     public User() {
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         User myUserDao = new dao.User();
-        model.User sampleUser2 = new model.User("samuel", "toast", "samgmailcom","sam", "osborne", "m", "do" );
-        model.User sampleUser = new model.User("sam", "toast", "samgmailcom","sam", "osborne", "m", "do" );
+        model.User sampleUser2 = new model.User("samuel", "toast", "samgmailcom", "sam", "osborne", "m", "do");
+        model.User sampleUser = new model.User("sam", "toast", "samgmailcom", "sam", "osborne", "m", "do");
         myUserDao.clearTable();
         myUserDao.createTable();
         myUserDao.addUser(sampleUser);
@@ -31,7 +32,7 @@ public class User {
     /**
      * Creates an empty user table
      */
-    public void createTable(){
+    public void createTable() {
         try (Connection conn = this.connect()) {
             if (conn != null) {
                 DatabaseMetaData meta = conn.getMetaData();
@@ -43,10 +44,10 @@ public class User {
             System.out.println(sql);
 
             Statement stmt = conn.createStatement();
-                // create a new table
-                stmt.execute(sql);
+            // create a new table
+            stmt.execute(sql);
 
-                conn.close();
+            conn.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -72,25 +73,26 @@ public class User {
 
     /**
      * Adds a specified user to the table
+     *
      * @param user
      */
-    public void addUser(model.User user){
+    public void addUser(model.User user) {
 
         StringBuilder sb = new StringBuilder();
         sb.append("INSERT INTO User (Username,Password,Email,FirstName,LastName,Gender,PersonID) VALUES (");
-        sb.append("'"+user.getUsername()+"'");
+        sb.append("'" + user.getUsername() + "'");
         sb.append(", ");
-        sb.append("'"+user.getPassword()+"'");
+        sb.append("'" + user.getPassword() + "'");
         sb.append(", ");
-        sb.append("'"+user.getEmail()+"'");
+        sb.append("'" + user.getEmail() + "'");
         sb.append(", ");
-        sb.append("'"+user.getFirstName()+"'");
+        sb.append("'" + user.getFirstName() + "'");
         sb.append(", ");
-        sb.append("'"+user.getLastName()+"'");
+        sb.append("'" + user.getLastName() + "'");
         sb.append(",");
-        sb.append("'"+user.getGender()+"'");
+        sb.append("'" + user.getGender() + "'");
         sb.append(",");
-        sb.append("'"+user.getPersonID()+"'");
+        sb.append("'" + user.getPersonID() + "'");
         sb.append(")");
         String sql = sb.toString();
         System.out.println(sql);
@@ -108,10 +110,11 @@ public class User {
 
     /**
      * Removes a specified user
+     *
      * @param user
      */
-    public void removeUser(model.User user){
-        String sqlDel = "DELETE FROM User WHERE Username = \"" + user.getUsername() +"\"";
+    public void removeUser(model.User user) {
+        String sqlDel = "DELETE FROM User WHERE Username = \"" + user.getUsername() + "\"";
         System.out.println(sqlDel);
         try (Connection conn = this.connect();
              Statement stmt = conn.createStatement()) {
@@ -124,11 +127,12 @@ public class User {
 
     /**
      * Get a user by username
+     *
      * @param username
      * @return the user object that corresponds with the username
      */
-    public model.User getUser(String username){
-        String sqlGet = "SELECT * FROM User WHERE Username = \"" + username +"\"";
+    public model.User getUser(String username) {
+        String sqlGet = "SELECT * FROM User WHERE Username = \"" + username + "\"";
         System.out.println(sqlGet);
         try (Connection conn = this.connect();
              Statement stmt = conn.createStatement()) {
@@ -153,7 +157,7 @@ public class User {
     /**
      * Clears the table by dropping it then recreating it
      */
-    public void clearTable(){
+    public void clearTable() {
         String drop = "DROP TABLE User";
         try (Connection conn = this.connect();
              Statement pstmt = conn.createStatement()) {

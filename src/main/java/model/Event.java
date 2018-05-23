@@ -45,6 +45,7 @@ public class Event {
 
     /**
      * Constructor for the event
+     *
      * @param eventID
      * @param descendant
      * @param person
@@ -69,6 +70,7 @@ public class Event {
 
     /**
      * Gets the unique ID for the event
+     *
      * @return the unique ID for the event
      */
     public String getEventID() {
@@ -77,6 +79,7 @@ public class Event {
 
     /**
      * sets the unique ID for the event
+     *
      * @param eventID
      */
     public void setEventID(String eventID) {
@@ -85,6 +88,7 @@ public class Event {
 
     /**
      * Gets the user that this person is related to
+     *
      * @return the user that this person is related to
      */
     public String getDescendant() {
@@ -93,6 +97,7 @@ public class Event {
 
     /**
      * Sets the user that this person is related to
+     *
      * @param descendant
      */
     public void setDescendant(String descendant) {
@@ -101,6 +106,7 @@ public class Event {
 
     /**
      * Gets the ID of the person to which this event belongs to
+     *
      * @return the ID of the person to which this event belongs to
      */
     public String getPerson() {
@@ -109,6 +115,7 @@ public class Event {
 
     /**
      * Sets the ID of the person to which this event belongs to
+     *
      * @param person
      */
     public void setPerson(String person) {
@@ -117,6 +124,7 @@ public class Event {
 
     /**
      * Gets the latitude of the event's location
+     *
      * @return the latitude of the event's location
      */
     public Double getLatitude() {
@@ -125,6 +133,7 @@ public class Event {
 
     /**
      * Sets the latitude of the event's location
+     *
      * @param latitude
      */
     public void setLatitude(Double latitude) {
@@ -133,6 +142,7 @@ public class Event {
 
     /**
      * Gets the longitude of the event's location
+     *
      * @return the longitude of the event's location
      */
     public Double getLongitude() {
@@ -141,6 +151,7 @@ public class Event {
 
     /**
      * Sets the longitude of the event's location
+     *
      * @param longitude
      */
     public void setLongitude(Double longitude) {
@@ -149,6 +160,7 @@ public class Event {
 
     /**
      * Gets the country in which the event occurred
+     *
      * @return the country in which the event occurred
      */
     public String getCountry() {
@@ -157,6 +169,7 @@ public class Event {
 
     /**
      * Sets the country in which the event occurred
+     *
      * @param country
      */
     public void setCountry(String country) {
@@ -165,6 +178,7 @@ public class Event {
 
     /**
      * Gets the city in which the event occurred
+     *
      * @return the city in which the event occurred
      */
     public String getCity() {
@@ -173,6 +187,7 @@ public class Event {
 
     /**
      * Sets the city in which the event occurred
+     *
      * @param city
      */
     public void setCity(String city) {
@@ -181,6 +196,7 @@ public class Event {
 
     /**
      * Gets the type of event
+     *
      * @return the type of event
      */
     public String getEventType() {
@@ -189,6 +205,7 @@ public class Event {
 
     /**
      * Sets the type of event
+     *
      * @param eventType
      */
     public void setEventType(String eventType) {
@@ -197,6 +214,7 @@ public class Event {
 
     /**
      * Gets the year in which the event occurred
+     *
      * @return the year in which the event occurred
      */
     public int getYear() {
@@ -205,6 +223,7 @@ public class Event {
 
     /**
      * Sets the year in which the event occurred
+     *
      * @param year
      */
     public void setYear(int year) {
@@ -213,6 +232,7 @@ public class Event {
 
     /**
      * Checks to see if an event is equal to another
+     *
      * @param o
      * @return true if the events are equal, false if not
      */
@@ -234,6 +254,7 @@ public class Event {
 
     /**
      * Gets the hashcode value of the event
+     *
      * @return the hashcode value of the event
      */
     @Override
@@ -244,6 +265,7 @@ public class Event {
 
     /**
      * Gets the string representation of the event object
+     *
      * @return the string that represents the event
      */
     @Override

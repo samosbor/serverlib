@@ -18,6 +18,7 @@ public class EventIDResult {
 
     /**
      * The constructor for the eventID result object
+     *
      * @param event
      */
     public EventIDResult(Event event, String message) {

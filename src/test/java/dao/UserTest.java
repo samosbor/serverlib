@@ -10,8 +10,8 @@ import static org.junit.Assert.*;
 
 public class UserTest {
     User myuser = new User();
-    model.User sampleUser2 = new model.User("samuel", "toast", "samgmailcom","sam", "osborne", "m", "do" );
-    model.User sampleUser = new model.User("sam", "toast", "samgmailcom","sam", "osborne", "m", "do" );
+    model.User sampleUser2 = new model.User("samuel", "toast", "samgmailcom", "sam", "osborne", "m", "do");
+    model.User sampleUser = new model.User("sam", "toast", "samgmailcom", "sam", "osborne", "m", "do");
 
     @Before
     public void setUp() throws Exception {

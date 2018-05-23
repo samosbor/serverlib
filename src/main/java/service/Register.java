@@ -12,11 +12,12 @@ public class Register {
 
     /**
      * The function to take in a register request, validate it, perform the register actions, and return a result object
+     *
      * @param request a register request object
      * @return the result object which will contain pass or fail response
      */
-    public RegisterResult register(RegisterRequest request){
+    public RegisterResult register(RegisterRequest request) {
         return null;
     }
-    
+
 }

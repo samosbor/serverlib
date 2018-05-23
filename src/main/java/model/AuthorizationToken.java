@@ -12,6 +12,7 @@ public class AuthorizationToken {
 
     /**
      * The constructor for an authorization token
+     *
      * @param token
      */
     public AuthorizationToken(String token) {
@@ -20,6 +21,7 @@ public class AuthorizationToken {
 
     /**
      * Gets the authorization token
+     *
      * @return
      */
     public String getToken() {
@@ -28,6 +30,7 @@ public class AuthorizationToken {
 
     /**
      * Sets the authorization token
+     *
      * @param token
      */
     public void setToken(String token) {
@@ -36,6 +39,7 @@ public class AuthorizationToken {
 
     /**
      * Checks to see if an authorization token is equal to another
+     *
      * @param o
      * @return true if the authorization tokens are equal, false if not
      */
@@ -51,6 +55,7 @@ public class AuthorizationToken {
 
     /**
      * Gets the hashcode value of the authorization token
+     *
      * @return the hashcode value of the authorization token
      */
     @Override
@@ -60,6 +65,7 @@ public class AuthorizationToken {
 
     /**
      * Gets the string representation of the authorization token object
+     *
      * @return the string that represents the authorization token
      */
     @Override

@@ -16,10 +16,11 @@ public class Login {
 
     /**
      * The function to take in a login request, validate it, perform the login actions, and return a result object
+     *
      * @param request a login request object
      * @return the login object which will contain pass or fail response
      */
-    public LoginResult login(LoginRequest request){
+    public LoginResult login(LoginRequest request) {
         return null;
     }
 }

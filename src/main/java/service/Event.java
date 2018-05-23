@@ -11,6 +11,7 @@ public class Event {
      * The Auth token given in the URL
      */
     String token;
+
     /**
      * The constructor for the event service object
      */
@@ -19,11 +20,12 @@ public class Event {
     }
 
     /**
-     *  Returns ALL events for ALL family members of the current user. The current
-     user is determined from the provided auth token.
+     * Returns ALL events for ALL family members of the current user. The current
+     * user is determined from the provided auth token.
+     *
      * @return an event result object
      */
-    public EventResult event(model.AuthorizationToken myToken){
+    public EventResult event(model.AuthorizationToken myToken) {
         return null;
     }
 }

@@ -24,6 +24,7 @@ public class LoadResult {
 
     /**
      * Constructor for the load result object
+     *
      * @param message
      * @param numUsers
      * @param numPersons

@@ -41,6 +41,7 @@ public class Person {
 
     /**
      * Constructor for a person. Father, mother, and spouse could be null. Other params must not be null.
+     *
      * @param personID
      * @param descendant
      * @param firstName
@@ -63,6 +64,7 @@ public class Person {
 
     /**
      * Gets the person's unique ID
+     *
      * @return the person's unique ID
      */
     public String getPersonID() {
@@ -71,6 +73,7 @@ public class Person {
 
     /**
      * Sets the person's unique ID
+     *
      * @param personID
      */
     public void setPersonID(String personID) {
@@ -79,6 +82,7 @@ public class Person {
 
     /**
      * Gets the user that this person is related to
+     *
      * @return the user that this person is related to
      */
     public String getDescendant() {
@@ -87,13 +91,16 @@ public class Person {
 
     /**
      * Sets the user that this person is related to
+     *
      * @param descendant
      */
     public void setDescendant(String descendant) {
         this.descendant = descendant;
     }
+
     /**
      * Gets the person's first name
+     *
      * @return the person's first name
      */
     public String getFirstName() {
@@ -102,13 +109,16 @@ public class Person {
 
     /**
      * Sets the person's first name
+     *
      * @param firstName
      */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+
     /**
      * Gets the person's last name
+     *
      * @return the person's last name
      */
     public String getLastName() {
@@ -117,13 +127,16 @@ public class Person {
 
     /**
      * Sets the person's last name
+     *
      * @param lastName
      */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
     /**
      * Gets the person's gender
+     *
      * @return the person's gender
      */
     public String getGender() {
@@ -132,13 +145,16 @@ public class Person {
 
     /**
      * Sets the person's gender
+     *
      * @param gender
      */
     public void setGender(String gender) {
         this.gender = gender;
     }
+
     /**
      * Gets the ID of the person's father
+     *
      * @return the ID of the person's father
      */
     public String getFather() {
@@ -147,13 +163,16 @@ public class Person {
 
     /**
      * Sets the person's father
+     *
      * @param father
      */
     public void setFather(String father) {
         this.father = father;
     }
+
     /**
      * Gets the ID of the person's mother
+     *
      * @return the ID of the person's mother
      */
     public String getMother() {
@@ -162,13 +181,16 @@ public class Person {
 
     /**
      * Sets the person's mother
+     *
      * @param mother
      */
     public void setMother(String mother) {
         this.mother = mother;
     }
+
     /**
      * Gets the ID of the person's spouse
+     *
      * @return the ID of the person's spouse
      */
     public String getSpouse() {
@@ -177,6 +199,7 @@ public class Person {
 
     /**
      * Sets the person's spouse
+     *
      * @param spouse
      */
     public void setSpouse(String spouse) {
@@ -185,6 +208,7 @@ public class Person {
 
     /**
      * Checks to see if a person is equal to another
+     *
      * @param o
      * @return true if the persons are equal, false if not
      */
@@ -202,8 +226,10 @@ public class Person {
                 Objects.equals(getMother(), person.getMother()) &&
                 Objects.equals(getSpouse(), person.getSpouse());
     }
+
     /**
      * Gets the hashcode value of the person
+     *
      * @return the hashcode value of the person
      */
     @Override
@@ -211,8 +237,10 @@ public class Person {
 
         return Objects.hash(getPersonID(), getDescendant(), getFirstName(), getLastName(), getGender(), getFather(), getMother(), getSpouse());
     }
+
     /**
      * Gets the string representation of the person object
+     *
      * @return the string that represents the person
      */
     @Override

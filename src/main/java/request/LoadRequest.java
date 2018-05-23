@@ -24,6 +24,7 @@ public class LoadRequest {
 
     /**
      * The constructor for the load request object
+     *
      * @param users
      * @param persons
      * @param events

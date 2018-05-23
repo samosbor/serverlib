@@ -20,6 +20,7 @@ public class FillResult {
 
     /**
      * Constructor for the fill result object
+     *
      * @param message
      * @param numPersons
      * @param numEvents

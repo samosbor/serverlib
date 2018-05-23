@@ -16,6 +16,7 @@ public class LoginRequest {
 
     /**
      * The constructor for the login object
+     *
      * @param username
      * @param password
      */

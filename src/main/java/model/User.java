@@ -36,6 +36,7 @@ public class User {
 
     /**
      * A User's constructor. Must have all values not null.
+     *
      * @param username
      * @param password
      * @param email
@@ -56,6 +57,7 @@ public class User {
 
     /**
      * Gets the user's username
+     *
      * @return the user's username
      */
     public String getUsername() {
@@ -64,6 +66,7 @@ public class User {
 
     /**
      * Sets the user's username
+     *
      * @param username
      */
     public void setUsername(String username) {
@@ -72,6 +75,7 @@ public class User {
 
     /**
      * Gets the users password
+     *
      * @return the user's password
      */
     public String getPassword() {
@@ -80,6 +84,7 @@ public class User {
 
     /**
      * Sets the user's username
+     *
      * @param password
      */
     public void setPassword(String password) {
@@ -88,6 +93,7 @@ public class User {
 
     /**
      * Gets the users email
+     *
      * @return the user's email
      */
     public String getEmail() {
@@ -96,6 +102,7 @@ public class User {
 
     /**
      * Sets the user's username
+     *
      * @param email
      */
     public void setEmail(String email) {
@@ -104,6 +111,7 @@ public class User {
 
     /**
      * Gets the users first name
+     *
      * @return the user's first name
      */
     public String getFirstName() {
@@ -112,6 +120,7 @@ public class User {
 
     /**
      * Sets the user's username
+     *
      * @param firstName
      */
     public void setFirstName(String firstName) {
@@ -120,6 +129,7 @@ public class User {
 
     /**
      * Gets the users last name
+     *
      * @return the user's last name
      */
     public String getLastName() {
@@ -128,6 +138,7 @@ public class User {
 
     /**
      * Sets the user's username
+     *
      * @param lastName
      */
     public void setLastName(String lastName) {
@@ -136,6 +147,7 @@ public class User {
 
     /**
      * Gets the users gender
+     *
      * @return the user's gender
      */
     public String getGender() {
@@ -144,6 +156,7 @@ public class User {
 
     /**
      * Sets the user's username
+     *
      * @param gender
      */
     public void setGender(String gender) {
@@ -152,6 +165,7 @@ public class User {
 
     /**
      * Gets the users ID
+     *
      * @return the user's ID
      */
     public String getPersonID() {
@@ -160,6 +174,7 @@ public class User {
 
     /**
      * Sets the user's username
+     *
      * @param personID
      */
     public void setPersonID(String personID) {
@@ -168,6 +183,7 @@ public class User {
 
     /**
      * Checks to see if a user is equal to another
+     *
      * @param o the object to compare
      * @return true if the users are equal, false if not
      */
@@ -189,6 +205,7 @@ public class User {
 
     /**
      * Gets the hashcode value of the user
+     *
      * @return the hashcode value of the user
      */
     @Override
@@ -205,6 +222,7 @@ public class User {
 
     /**
      * Gets the string representation of the user object
+     *
      * @return the string that represents the user
      */
     @Override

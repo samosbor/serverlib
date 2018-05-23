@@ -32,6 +32,7 @@ public class RegisterRequest {
 
     /**
      * Constructor for the register request object
+     *
      * @param username
      * @param password
      * @param email

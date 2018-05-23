@@ -12,6 +12,7 @@ public class ClearResult {
 
     /**
      * The constructor for the clear result object
+     *
      * @param message
      */
     public ClearResult(String message) {

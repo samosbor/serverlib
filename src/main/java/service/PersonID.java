@@ -15,6 +15,7 @@ public class PersonID {
      * The Auth token given in the URL
      */
     String token;
+
     /**
      * The constructor for the personID service object
      */
@@ -22,11 +23,13 @@ public class PersonID {
         this.personID = personID;
         this.token = token;
     }
+
     /**
      * Function to get a person by ID
+     *
      * @return a PersonIDResult result object
      */
-    public PersonIDResult getPerson(model.AuthorizationToken myToken){
+    public PersonIDResult getPerson(model.AuthorizationToken myToken) {
         return null;
     }
 }

@@ -18,6 +18,7 @@ public class PersonIDResult {
 
     /**
      * The constructor for the personID result object
+     *
      * @param person
      */
     public PersonIDResult(Person person, String message) {

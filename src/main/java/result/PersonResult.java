@@ -12,6 +12,7 @@ public class PersonResult {
 
     /**
      * The constructor for the person result object
+     *
      * @param data
      */
     public PersonResult(model.Person[] data) {

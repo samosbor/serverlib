@@ -26,9 +26,10 @@ public class EventID {
 
     /**
      * Function to get an event by ID
+     *
      * @return an EventIDResult result object
      */
-    public EventIDResult getEvent(model.AuthorizationToken myToken){
+    public EventIDResult getEvent(model.AuthorizationToken myToken) {
         return null;
     }
 }

@@ -12,6 +12,7 @@ public class EventResult {
 
     /**
      * The constructor for the event result object
+     *
      * @param data
      */
     public EventResult(model.Event[] data) {
