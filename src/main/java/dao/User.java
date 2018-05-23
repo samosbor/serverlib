@@ -26,6 +26,7 @@ public class User {
         myUserDao.addUser(sampleUser2);
         myUserDao.removeUser(sampleUser);
         myUserDao.getUser("samuel");
+        myUserDao.getUser("samuel");
 
     }
 
