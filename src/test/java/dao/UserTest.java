@@ -25,7 +25,6 @@ public class UserTest {
     public void createTable() {
         myuser.createTable();
         assertTrue(new File("mydata.db").isFile());
-        assertTrue(true);
     }
 
     @Test
