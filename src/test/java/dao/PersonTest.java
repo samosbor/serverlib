@@ -25,6 +25,7 @@ public class PersonTest {
     @Before
     public void setUp() throws Exception {
         myPersonDao = new dao.Person();
+        myPersonDao.createTable();
         samplePerson = new model.Person("petiwg", "r", "rod", "osborne", "m","manuel", "nancy", "nan");
         samplePerson2 = new model.Person("a", "a", "a", "a", "m","a", "a", "a");
         samplePerson3 = new model.Person("b", "b", "b", "b", "m","b", "b", "b");
