@@ -59,7 +59,21 @@ public class AuthorizationToken {
      * @param token
      */
     public void addToken(model.AuthorizationToken token) {
-
+        StringBuilder sb = new StringBuilder();
+        sb.append("INSERT INTO AuthorizationToken (AuthorizationToken, User) VALUES (");
+        sb.append("'" + token.getToken() + "'");
+        sb.append(", ");
+        sb.append("'" + token.getUser() + "'");
+        sb.append(")");
+        String sql = sb.toString();
+        try (Connection conn = this.connect();
+             Statement pstmt = conn.createStatement()) {
+            pstmt.execute(sql);
+            pstmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     /**
@@ -68,7 +82,14 @@ public class AuthorizationToken {
      * @param token
      */
     public void removeToken(model.AuthorizationToken token) {
-
+        String sqlDel = "DELETE FROM AuthorizationToken WHERE AuthorizationToken = \"" + token + "\"";
+        try (Connection conn = this.connect();
+             Statement stmt = conn.createStatement()) {
+            stmt.execute(sqlDel);
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     /**

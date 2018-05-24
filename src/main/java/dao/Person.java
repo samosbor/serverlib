@@ -18,13 +18,6 @@ public class Person {
     }
 
 
-    public static void main(String[] args) {
-        Person myPersonDao = new dao.Person();
-        myPersonDao.createTable();
-        model.Person samplePerson = new model.Person("petiwg", "samuel", "rod", "osborne", "m","manuel", "nancy", "nan");
-        myPersonDao.addPerson(samplePerson);
-    }
-
     /**
      * Creates an empty person table
      */
@@ -104,7 +97,7 @@ public class Person {
      * @param person
      */
     public void removePerson(model.Person person) {
-        String sqlDel = "DELETE FROM User WHERE Username = \"" + person.getPersonID() + "\"";
+        String sqlDel = "DELETE FROM Person WHERE PersonID = \"" + person.getPersonID() + "\"";
         try (Connection conn = this.connect();
              Statement stmt = conn.createStatement()) {
             stmt.execute(sqlDel);
@@ -121,7 +114,7 @@ public class Person {
      * @return the person object that corresponds with the personID
      */
     public model.Person getPerson(String personID) {
-        String sqlGet = "SELECT * FROM User WHERE Username = \"" + personID + "\"";
+        String sqlGet = "SELECT * FROM Person WHERE PersonID = \"" + personID + "\"";
         try (Connection conn = this.connect();
              Statement stmt = conn.createStatement()) {
             ResultSet res = stmt.executeQuery(sqlGet);
