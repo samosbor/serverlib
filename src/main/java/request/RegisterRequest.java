@@ -6,9 +6,9 @@ package request;
 
 public class RegisterRequest {
     /**
-     * The username that is to be registered. Must not already be in the database.
+     * The userName that is to be registered. Must not already be in the database.
      */
-    String username;
+    String userName;
     /**
      * The password that the user chose
      */
@@ -33,15 +33,15 @@ public class RegisterRequest {
     /**
      * Constructor for the register request object
      *
-     * @param username
+     * @param userName
      * @param password
      * @param email
      * @param firstName
      * @param lastName
      * @param gender
      */
-    public RegisterRequest(String username, String password, String email, String firstName, String lastName, String gender) {
-        this.username = username;
+    public RegisterRequest(String userName, String password, String email, String firstName, String lastName, String gender) {
+        this.userName = userName;
         this.password = password;
         this.email = email;
         this.firstName = firstName;
@@ -50,11 +50,11 @@ public class RegisterRequest {
     }
 
     public String getUsername() {
-        return username;
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsername(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {

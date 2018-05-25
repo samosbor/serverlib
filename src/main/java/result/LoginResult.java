@@ -10,13 +10,13 @@ public class LoginResult {
      */
     String authToken;
     /**
-     * The username passed in with the request
+     * The userName passed in with the request
      */
-    String username;
+    String userName;
     /**
      * The person ID of the user's generated person object
      */
-    String personID;
+    String personId;
     /**
      * The message to be output in case of error
      */
@@ -26,14 +26,14 @@ public class LoginResult {
      * The constructor for the register response object
      *
      * @param authToken
-     * @param username
-     * @param personID
+     * @param userName
+     * @param personId
      * @param message
      */
-    public LoginResult(String authToken, String username, String personID, String message) {
+    public LoginResult(String authToken, String userName, String personId, String message) {
         this.authToken = authToken;
-        this.username = username;
-        this.personID = personID;
+        this.userName = userName;
+        this.personId = personId;
         this.message = message;
     }
 
@@ -46,19 +46,19 @@ public class LoginResult {
     }
 
     public String getUsername() {
-        return username;
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsername(String userName) {
+        this.userName = userName;
     }
 
     public String getPersonID() {
-        return personID;
+        return personId;
     }
 
-    public void setPersonID(String personID) {
-        this.personID = personID;
+    public void setPersonID(String personId) {
+        this.personId = personId;
     }
 
     public String getMessage() {

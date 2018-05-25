@@ -6,9 +6,9 @@ package request;
 
 public class LoginRequest {
     /**
-     * The username entered to try to login
+     * The userName entered to try to login
      */
-    String username;
+    String userName;
     /**
      * The password entered to try to login
      */
@@ -17,20 +17,20 @@ public class LoginRequest {
     /**
      * The constructor for the login object
      *
-     * @param username
+     * @param userName
      * @param password
      */
-    public LoginRequest(String username, String password) {
-        this.username = username;
+    public LoginRequest(String userName, String password) {
+        this.userName = userName;
         this.password = password;
     }
 
     public String getUsername() {
-        return username;
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsername(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
