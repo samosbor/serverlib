@@ -154,19 +154,22 @@ public class Event {
     }
 
     public ArrayList<model.Event> getAllEvents(model.AuthorizationToken token){
+        model.Person currentPerson = getPersonFromAT(token);
+
+        ArrayList<model.Event> initialList = new ArrayList<>();
+        ArrayList<model.Person> personList = new ArrayList<>();
+        return allEventsDFS(currentPerson, initialList, personList);
+
+    }
+
+    private model.Person getPersonFromAT(model.AuthorizationToken token){
         String currentUsername = token.getUser();
         dao.User userDao = new dao.User();
         model.User currentUser = userDao.getUser(currentUsername);
         String currentPersonId = currentUser.getPersonID();
         System.out.println(currentPersonId);
         dao.Person personDao = new dao.Person();
-        model.Person currentPerson = personDao.getPerson(currentPersonId);
-        System.out.println(currentPerson.getPersonID());
-
-        ArrayList<model.Event> initialList = new ArrayList<>();
-        ArrayList<model.Person> personList = new ArrayList<>();
-        return allEventsDFS(currentPerson, initialList, personList);
-
+        return personDao.getPerson(currentPersonId);
     }
 
     private ArrayList<model.Event> allEventsDFS(model.Person person, ArrayList<model.Event> list, ArrayList<model.Person> personList ){
@@ -200,15 +203,11 @@ public class Event {
 
     private ArrayList<model.Event> getEvents(model.Person person){
         ArrayList<model.Event> outList = new ArrayList<>();
-        System.out.println("here2");
-        System.out.println(person.getPersonID());
         String sqlGet = "SELECT EventID FROM Event WHERE Person = \"" + person.getPersonID() + "\"";
-        System.out.println("here1");
         try (Connection conn = this.connect();
              Statement stmt = conn.createStatement()) {
             ResultSet res = stmt.executeQuery(sqlGet);
-            while(!res.isLast()){
-                System.out.println("infinite");
+            while(res.next()){
                 String eventID = res.getString("EventID");
                 model.Event event = this.getEvent(eventID);
                 outList.add(event);

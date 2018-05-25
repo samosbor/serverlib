@@ -173,11 +173,19 @@ public class Person {
         dao.User userDao = new dao.User();
         model.User currentUser = userDao.getUser(currentUsername);
         String currentPersonId = currentUser.getPersonID();
-        model.Person currentPerson = this.getPerson(currentPersonId);
+        model.Person currentPerson = getPersonFromAT(token);
 
         ArrayList<model.Person> initialList = new ArrayList<>();
         return allFamilyDFS(currentPerson, initialList);
 
+    }
+
+    private model.Person getPersonFromAT(model.AuthorizationToken token){
+        String currentUsername = token.getUser();
+        dao.User userDao = new dao.User();
+        model.User currentUser = userDao.getUser(currentUsername);
+        String currentPersonId = currentUser.getPersonID();
+        return this.getPerson(currentPersonId);
     }
 
     private ArrayList<model.Person> allFamilyDFS(model.Person person, ArrayList<model.Person> list){
