@@ -25,12 +25,13 @@ public class PersonTest {
     @Before
     public void setUp() throws Exception {
         myPersonDao = new dao.Person();
+        myPersonDao.clearTable();
         myPersonDao.createTable();
         samplePerson = new model.Person("petiwg", "r", "rod", "osborne", "m","manuel", "nancy", "nan");
         samplePerson2 = new model.Person("a", "a", "a", "a", "m","a", "a", "a");
         samplePerson3 = new model.Person("b", "b", "b", "b", "m","b", "b", "b");
 
-        son = new model.Person("son", "sam", "sam", "osborne", "m","rod", "nan", "kaitlyn");
+        son = new model.Person("son", "sam", "sam", "osborne", "m","dad", "mom", "kaitlyn");
         mom = new model.Person("mom", "sam", "nan", "osborne", "f","duane", "juanita", "dad");
         dad = new model.Person("dad", "sam", "rod", "osborne", "m","grandpa", "grandma", "mom");
         grandpa = new model.Person("grandpa", "sam", "manuel", "osborne", "m","1", "2", "grandma");
@@ -89,6 +90,13 @@ public class PersonTest {
 
     @Test
     public void getAllFamily() throws Exception {
+        dao.User userDao = new User();
+        dao.AuthorizationToken aDao= new dao.AuthorizationToken();
+        userDao.createTable();
+        aDao.createTable();
+        model.User sam = new model.User("sam", "idk", "idk", "sam", "osborne", "m", "son");
+        userDao.addUser(sam);
+
         myPersonDao.addPerson(son);
         myPersonDao.addPerson(mom);
         myPersonDao.addPerson(dad);

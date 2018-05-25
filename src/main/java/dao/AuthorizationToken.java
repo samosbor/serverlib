@@ -23,7 +23,7 @@ public class AuthorizationToken {
                 System.out.println("A new database has been created.");
             }
 
-            String sql = "CREATE TABLE `AuthorizationToken` ( `AuthorizationToken` TEXT NOT NULL UNIQUE, `User` TEXT NOT NULL,FOREIGN KEY(`User`) REFERENCES `User`(`Username`) PRIMARY KEY(`AuthorizationToken`) )";
+            String sql = "CREATE TABLE IF NOT EXISTS `AuthorizationToken` ( `AuthorizationToken` TEXT NOT NULL UNIQUE, `User` TEXT NOT NULL,FOREIGN KEY(`User`) REFERENCES `User`(`Username`) PRIMARY KEY(`AuthorizationToken`) )";
 
             Statement stmt = conn.createStatement();
             // create a new table

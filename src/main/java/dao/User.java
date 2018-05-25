@@ -35,15 +35,9 @@ public class User {
      */
     public void createTable() {
         try (Connection conn = this.connect()) {
-            if (conn != null) {
-                DatabaseMetaData meta = conn.getMetaData();
-                System.out.println("A new database has been created.");
-            }
-
             String sql = "CREATE TABLE IF NOT EXISTS \"User\" ( `Username` TEXT NOT NULL UNIQUE, `Password` TEXT NOT NULL, `Email` TEXT NOT NULL, `FirstName` TEXT NOT NULL, `LastName` TEXT NOT NULL, `Gender` TEXT NOT NULL CHECK(Gender == \"m\" OR Gender == \"f\"), `PersonID` TEXT NOT NULL, PRIMARY KEY(`Username`), FOREIGN KEY(`PersonID`) REFERENCES `Person`(`PersonID`) )";
 
             Statement stmt = conn.createStatement();
-            // create a new table
             stmt.execute(sql);
 
             conn.close();

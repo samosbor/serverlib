@@ -18,19 +18,17 @@ public class Event {
     public Event() {
     }
 
+    public static void main(String[] args){
+        Event myEventDao = new Event();
+        myEventDao.createTable();
+    }
     /**
      * Creates an empty event table
      */
     public void createTable() {
         try (Connection conn = this.connect()) {
-            if (conn != null) {
-                System.out.println("A new database has been created.");
-            }
-
-            String sql = "CREATE TABLE IF NOT EXISTS`Event` ( `EventID` TEXT NOT NULL UNIQUE, `Descendant` TEXT NOT NULL, `Person` TEXT NOT NULL, `Latitude` TEXT, `Longitude` TEXT, `Country` TEXT, `City` TEXT, `EventType` TEXT NOT NULL, `Year` INTEGER, FOREIGN KEY(`Descendant`) REFERENCES `User`(`Username`), FOREIGN KEY(`Person`) REFERENCES `Person`(`PersonID`), PRIMARY KEY(`EventID`) )\n";
-
+            String sql = "CREATE TABLE IF NOT EXISTS \"Event\" ( `EventID` TEXT NOT NULL UNIQUE, `Descendant` TEXT NOT NULL, `Person` TEXT NOT NULL, `Latitude` TEXT, `Longitude` TEXT, `Country` TEXT, `City` TEXT, `EventType` TEXT NOT NULL, `Year` INTEGER, FOREIGN KEY(`Descendant`) REFERENCES `User`(`Username`), FOREIGN KEY(`Person`) REFERENCES `Person`(`PersonID`), PRIMARY KEY(`EventID`) )";
             Statement stmt = conn.createStatement();
-            // create a new table
             stmt.execute(sql);
 
             conn.close();
@@ -160,15 +158,21 @@ public class Event {
         dao.User userDao = new dao.User();
         model.User currentUser = userDao.getUser(currentUsername);
         String currentPersonId = currentUser.getPersonID();
+        System.out.println(currentPersonId);
         dao.Person personDao = new dao.Person();
         model.Person currentPerson = personDao.getPerson(currentPersonId);
+        System.out.println(currentPerson.getPersonID());
 
         ArrayList<model.Event> initialList = new ArrayList<>();
-        return allEventsDFS(currentPerson, initialList);
+        ArrayList<model.Person> personList = new ArrayList<>();
+        return allEventsDFS(currentPerson, initialList, personList);
 
     }
 
-    private ArrayList<model.Event> allEventsDFS(model.Person person, ArrayList<model.Event> list){
+    private ArrayList<model.Event> allEventsDFS(model.Person person, ArrayList<model.Event> list, ArrayList<model.Person> personList ){
+        if(!personList.contains(person)){
+            personList.add(person);
+        }
         for(model.Event element : getEvents(person)){
             if(!list.contains(element)){
                 list.add(element);
@@ -176,25 +180,35 @@ public class Event {
         }
         dao.Person personDao = new dao.Person();
 
-        while(person.getFather() != null){
-            allEventsDFS(personDao.getPerson(person.getFather()),list);
+        if(person.getFather() != null && personDao.getPerson(person.getFather()) != null){
+            if(!personList.contains(personDao.getPerson(person.getFather()))) {
+                allEventsDFS(personDao.getPerson(person.getFather()), list, personList);
+            }
         }
-        while(person.getMother() != null){
-            allEventsDFS(personDao.getPerson(person.getMother()),list);
+        if(person.getMother() != null && personDao.getPerson(person.getMother()) != null){
+            if(!personList.contains(personDao.getPerson(person.getMother()))) {
+                allEventsDFS(personDao.getPerson(person.getMother()), list, personList);
+            }
         }
-        while(person.getSpouse() != null){
-            allEventsDFS(personDao.getPerson(person.getSpouse()),list);
+        if(person.getSpouse() != null&& personDao.getPerson(person.getSpouse()) != null){
+            if(!personList.contains(personDao.getPerson(person.getSpouse()))) {
+                allEventsDFS(personDao.getPerson(person.getSpouse()), list, personList);
+            }
         }
         return list;
     }
 
     private ArrayList<model.Event> getEvents(model.Person person){
         ArrayList<model.Event> outList = new ArrayList<>();
+        System.out.println("here2");
+        System.out.println(person.getPersonID());
         String sqlGet = "SELECT EventID FROM Event WHERE Person = \"" + person.getPersonID() + "\"";
+        System.out.println("here1");
         try (Connection conn = this.connect();
              Statement stmt = conn.createStatement()) {
             ResultSet res = stmt.executeQuery(sqlGet);
-            while(!res.isAfterLast()){
+            while(!res.isLast()){
+                System.out.println("infinite");
                 String eventID = res.getString("EventID");
                 model.Event event = this.getEvent(eventID);
                 outList.add(event);

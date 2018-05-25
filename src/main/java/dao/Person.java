@@ -17,20 +17,36 @@ public class Person {
     public Person() {
     }
 
+    public static void main(String[] args){
+        dao.User userDao = new User();
+        dao.AuthorizationToken aDao= new dao.AuthorizationToken();
+        userDao.createTable();
+        aDao.createTable();
+        dao.Person myPersonDao = new dao.Person();
+        myPersonDao.createTable();
+        model.Person son = new model.Person("son", "sam", "sam", "osborne", "m","rod", "nan", "kaitlyn");
+        model.Person mom = new model.Person("mom", "sam", "nan", "osborne", "f","duane", "juanita", "dad");
+        model.Person dad = new model.Person("dad", "sam", "rod", "osborne", "m","grandpa", "grandma", "mom");
+        model.Person grandpa = new model.Person("grandpa", "sam", "manuel", "osborne", "m","1", "2", "grandma");
+        model.Person grandma = new model.Person("grandma", "sam", "nancy", "osborne", "f","3", "4", "grandpa");
+
+        myPersonDao.addPerson(son);
+        myPersonDao.addPerson(mom);
+        myPersonDao.addPerson(dad);
+        myPersonDao.addPerson(grandma);
+        myPersonDao.addPerson(grandpa);
+        model.AuthorizationToken samToken = new model.AuthorizationToken("randomstring", "sam");
+        ArrayList<model.Person> allfamlist = myPersonDao.getAllFamily(samToken);
+        System.out.println(allfamlist.toString());
+    }
 
     /**
      * Creates an empty person table
      */
     public void createTable() {
         try (Connection conn = this.connect()) {
-            if (conn != null) {
-                System.out.println("A new database has been created.");
-            }
-
             String sql = "CREATE TABLE IF NOT EXISTS \"Person\" ( `PersonID` TEXT NOT NULL UNIQUE, `Descendant` TEXT NOT NULL, `FirstName` TEXT NOT NULL, `LastName` TEXT NOT NULL, `Gender` TEXT NOT NULL CHECK(Gender == \"m\" OR Gender == \"f\"), `Father` TEXT, `Mother` TEXT, `Spouse` TEXT, FOREIGN KEY(`Descendant`) REFERENCES `User`(`Username`), PRIMARY KEY(`PersonID`) )";
-
             Statement stmt = conn.createStatement();
-            // create a new table
             stmt.execute(sql);
 
             conn.close();
@@ -168,14 +184,20 @@ public class Person {
         if(!list.contains(person)){
             list.add(person);
         }
-        while(person.getFather() != null){
-            allFamilyDFS(getPerson(person.getFather()),list);
+        if(person.getFather() != null && getPerson(person.getFather()) != null){
+            if(!list.contains(getPerson(person.getFather()))) {
+                allFamilyDFS(getPerson(person.getFather()), list);
+            }
         }
-        while(person.getMother() != null){
-            allFamilyDFS(getPerson(person.getMother()),list);
+        if(person.getMother() != null && getPerson(person.getMother()) != null){
+            if(!list.contains(getPerson(person.getMother()))) {
+                allFamilyDFS(getPerson(person.getMother()), list);
+            }
         }
-        while(person.getSpouse() != null){
-            allFamilyDFS(getPerson(person.getSpouse()),list);
+        if(person.getSpouse() != null && getPerson(person.getSpouse()) != null){
+            if(!list.contains(getPerson(person.getSpouse()))) {
+                allFamilyDFS(getPerson(person.getSpouse()), list);
+            }
         }
         return list;
     }
