@@ -3,6 +3,8 @@ import java.io.*;
 import java.net.*;
 import com.sun.net.httpserver.*;
 
+import org.xml.sax.helpers.DefaultHandler;
+
 import handler.RegisterHandler;
 
 public class Server {
@@ -27,6 +29,7 @@ public class Server {
 
 
         server.createContext("/user/register", new RegisterHandler());
+        server.createContext("/", new handler.DefaultHandler());
 
         System.out.println("Server started");
         server.start();

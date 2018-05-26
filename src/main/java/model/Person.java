@@ -62,6 +62,14 @@ public class Person {
         this.spouse = spouse;
     }
 
+    public Person(String personID, String descendant, String firstName, String lastName, String gender) {
+        this.personID = personID;
+        this.descendant = descendant;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+    }
+
     /**
      * Gets the person's unique ID
      *

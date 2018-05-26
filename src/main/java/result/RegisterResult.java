@@ -28,12 +28,14 @@ public class RegisterResult {
      * @param authToken
      * @param userName
      * @param personId
-     * @param message
      */
-    public RegisterResult(String authToken, String userName, String personId, String message) {
+    public RegisterResult(String authToken, String userName, String personId) {
         this.authToken = authToken;
         this.userName = userName;
         this.personId = personId;
+    }
+
+    public RegisterResult(String message) {
         this.message = message;
     }
 
