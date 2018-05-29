@@ -11,13 +11,13 @@ public class Event {
      */
     String eventID;
     /**
-     * The user to which this person belongs
+     * The user to which this personID belongs
      */
     String descendant;
     /**
-     * ID of the person to which this event belongs
+     * ID of the personID to which this event belongs
      */
-    String person;
+    String personID;
     /**
      * Latitude of the event's location
      */
@@ -48,7 +48,7 @@ public class Event {
      *
      * @param eventID
      * @param descendant
-     * @param person
+     * @param personID
      * @param latitude
      * @param longitude
      * @param country
@@ -56,10 +56,10 @@ public class Event {
      * @param eventType
      * @param year
      */
-    public Event(String eventID, String descendant, String person, Double latitude, Double longitude, String country, String city, String eventType, int year) {
+    public Event(String eventID, String descendant, String personID, Double latitude, Double longitude, String country, String city, String eventType, int year) {
         this.eventID = eventID;
         this.descendant = descendant;
-        this.person = person;
+        this.personID = personID;
         this.latitude = latitude;
         this.longitude = longitude;
         this.country = country;
@@ -87,16 +87,16 @@ public class Event {
     }
 
     /**
-     * Gets the user that this person is related to
+     * Gets the user that this personID is related to
      *
-     * @return the user that this person is related to
+     * @return the user that this personID is related to
      */
     public String getDescendant() {
         return descendant;
     }
 
     /**
-     * Sets the user that this person is related to
+     * Sets the user that this personID is related to
      *
      * @param descendant
      */
@@ -105,21 +105,21 @@ public class Event {
     }
 
     /**
-     * Gets the ID of the person to which this event belongs to
+     * Gets the ID of the personID to which this event belongs to
      *
-     * @return the ID of the person to which this event belongs to
+     * @return the ID of the personID to which this event belongs to
      */
     public String getPerson() {
-        return person;
+        return personID;
     }
 
     /**
-     * Sets the ID of the person to which this event belongs to
+     * Sets the ID of the personID to which this event belongs to
      *
-     * @param person
+     * @param personID
      */
-    public void setPerson(String person) {
-        this.person = person;
+    public void setPerson(String personID) {
+        this.personID = personID;
     }
 
     /**
@@ -273,7 +273,7 @@ public class Event {
         return "EventResult{" +
                 "eventID='" + eventID + '\'' +
                 ", descendant='" + descendant + '\'' +
-                ", person='" + person + '\'' +
+                ", personID='" + personID + '\'' +
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +
                 ", country='" + country + '\'' +

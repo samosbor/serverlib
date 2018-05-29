@@ -1,5 +1,9 @@
 package service;
 
+import dao.AuthorizationToken;
+import dao.Event;
+import dao.Person;
+import dao.User;
 import request.LoadRequest;
 import result.LoadResult;
 
@@ -22,6 +26,30 @@ public class Load {
      * @return
      */
     public LoadResult load(LoadRequest request) {
-        return null;
+        dao.AuthorizationToken aDao = new AuthorizationToken();
+        dao.Person pDao = new Person();
+        dao.User uDao = new User();
+        dao.Event eDao = new Event();
+        String message;
+        LoadResult result;
+        int numUsers = 0;
+        int numPersons = 0;
+        int numEvents = 0;
+
+        for(model.User element : request.getUsers()){
+            uDao.addUser(element);
+            numUsers++;
+        }
+        for(model.Person element : request.getPersons()){
+            pDao.addPerson(element);
+            numPersons++;
+        }
+        for(model.Event element : request.getEvents()){
+            eDao.addEvent(element);
+            numEvents++;
+        }
+        message = "Successfully added "+Integer.toString(numUsers)+" users, "+Integer.toString(numPersons)+" persons, and "+Integer.toString(numEvents)+" events to the database.";
+        result = new LoadResult(message,numUsers, numPersons, numEvents);
+        return result;
     }
 }

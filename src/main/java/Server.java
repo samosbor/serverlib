@@ -5,6 +5,9 @@ import com.sun.net.httpserver.*;
 
 import org.xml.sax.helpers.DefaultHandler;
 
+import handler.ClearHandler;
+import handler.LoadHandler;
+import handler.LoginHandler;
 import handler.RegisterHandler;
 
 public class Server {
@@ -29,6 +32,9 @@ public class Server {
 
 
         server.createContext("/user/register", new RegisterHandler());
+        server.createContext("/user/login", new LoginHandler());
+        server.createContext("/clear", new ClearHandler());
+        server.createContext("/load", new LoadHandler());
         server.createContext("/", new handler.DefaultHandler());
 
         System.out.println("Server started");

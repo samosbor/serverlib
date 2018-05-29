@@ -35,7 +35,7 @@ public class User {
      */
     public void createTable() {
         try (Connection conn = this.connect()) {
-            String sql = "CREATE TABLE IF NOT EXISTS \"User\" ( `Username` TEXT NOT NULL UNIQUE, `Password` TEXT NOT NULL, `Email` TEXT NOT NULL, `FirstName` TEXT NOT NULL, `LastName` TEXT NOT NULL, `Gender` TEXT NOT NULL CHECK(Gender == \"m\" OR Gender == \"f\"), `PersonID` TEXT NOT NULL, PRIMARY KEY(`Username`), FOREIGN KEY(`PersonID`) REFERENCES `Person`(`PersonID`) )";
+            String sql = "CREATE TABLE IF NOT EXISTS \"User\" ( `UserName` TEXT NOT NULL UNIQUE, `Password` TEXT NOT NULL, `Email` TEXT NOT NULL, `FirstName` TEXT NOT NULL, `LastName` TEXT NOT NULL, `Gender` TEXT NOT NULL CHECK(Gender == \"m\" OR Gender == \"f\"), `PersonID` TEXT NOT NULL, PRIMARY KEY(`Username`), FOREIGN KEY(`PersonID`) REFERENCES `Person`(`PersonID`) )";
 
             Statement stmt = conn.createStatement();
             stmt.execute(sql);
@@ -71,8 +71,8 @@ public class User {
     public void addUser(model.User user) {
 
         StringBuilder sb = new StringBuilder();
-        sb.append("INSERT INTO User (Username,Password,Email,FirstName,LastName,Gender,PersonID) VALUES (");
-        sb.append("'" + user.getUsername() + "'");
+        sb.append("INSERT INTO User (UserName,Password,Email,FirstName,LastName,Gender,PersonID) VALUES (");
+        sb.append("'" + user.getUserName() + "'");
         sb.append(", ");
         sb.append("'" + user.getPassword() + "'");
         sb.append(", ");
@@ -105,7 +105,7 @@ public class User {
      * @param user
      */
     public void removeUser(model.User user) {
-        String sqlDel = "DELETE FROM User WHERE Username = \"" + user.getUsername() + "\"";
+        String sqlDel = "DELETE FROM User WHERE Username = \"" + user.getUserName() + "\"";
         try (Connection conn = this.connect();
              Statement stmt = conn.createStatement()) {
             stmt.execute(sqlDel);
@@ -116,24 +116,24 @@ public class User {
     }
 
     /**
-     * Get a user by username
+     * Get a user by userName
      *
-     * @param username
-     * @return the user object that corresponds with the username
+     * @param userName
+     * @return the user object that corresponds with the userName
      */
-    public model.User getUser(String username) {
-        String sqlGet = "SELECT * FROM User WHERE Username = \"" + username + "\"";
+    public model.User getUser(String userName) {
+        String sqlGet = "SELECT * FROM User WHERE UserName = \"" + userName + "\"";
         try (Connection conn = this.connect();
              Statement stmt = conn.createStatement()) {
             ResultSet res = stmt.executeQuery(sqlGet);
-            String myusername = res.getString("username");
+            String myuserName = res.getString("userName");
             String password = res.getString("password");
             String email = res.getString("email");
             String firstName = res.getString("firstName");
             String lastName = res.getString("lastName");
             String gender = res.getString("gender");
             String personID = res.getString("personID");
-            model.User outUser = new model.User(myusername, password, email, firstName, lastName, gender, personID);
+            model.User outUser = new model.User(myuserName, password, email, firstName, lastName, gender, personID);
             conn.close();
             return outUser;
         } catch (SQLException e) {

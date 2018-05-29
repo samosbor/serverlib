@@ -1,5 +1,9 @@
 package service;
 
+import dao.AuthorizationToken;
+import dao.Event;
+import dao.Person;
+import dao.User;
 import result.ClearResult;
 
 /**
@@ -20,6 +24,22 @@ public class Clear {
      * @return
      */
     public ClearResult clear() {
-        return null;
+        dao.AuthorizationToken aDao = new AuthorizationToken();
+        dao.Person pDao = new Person();
+        dao.User uDao = new User();
+        dao.Event eDao = new Event();
+        String message;
+        try{
+            aDao.clearTable();
+            pDao.clearTable();
+            uDao.clearTable();
+            eDao.clearTable();
+
+            message = "Clear Succeeded.";
+        }catch(Exception e){
+            message = e.toString();
+        }
+        ClearResult result = new ClearResult(message);
+        return result;
     }
 }

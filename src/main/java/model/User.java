@@ -6,9 +6,9 @@ package model;
 
 public class User {
     /**
-     * A user's username
+     * A user's userName
      */
-    String username;
+    String userName;
     /**
      * A user's password
      */
@@ -37,7 +37,7 @@ public class User {
     /**
      * A User's constructor. Must have all values not null.
      *
-     * @param username
+     * @param userName
      * @param password
      * @param email
      * @param firstName
@@ -45,8 +45,8 @@ public class User {
      * @param gender
      * @param personID
      */
-    public User(String username, String password, String email, String firstName, String lastName, String gender, String personID) {
-        this.username = username;
+    public User(String userName, String password, String email, String firstName, String lastName, String gender, String personID) {
+        this.userName = userName;
         this.password = password;
         this.email = email;
         this.firstName = firstName;
@@ -56,21 +56,21 @@ public class User {
     }
 
     /**
-     * Gets the user's username
+     * Gets the user's userName
      *
-     * @return the user's username
+     * @return the user's userName
      */
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
     /**
-     * Sets the user's username
+     * Sets the user's userName
      *
-     * @param username
+     * @param userName
      */
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     /**
@@ -83,7 +83,7 @@ public class User {
     }
 
     /**
-     * Sets the user's username
+     * Sets the user's userName
      *
      * @param password
      */
@@ -101,7 +101,7 @@ public class User {
     }
 
     /**
-     * Sets the user's username
+     * Sets the user's userName
      *
      * @param email
      */
@@ -119,7 +119,7 @@ public class User {
     }
 
     /**
-     * Sets the user's username
+     * Sets the user's userName
      *
      * @param firstName
      */
@@ -137,7 +137,7 @@ public class User {
     }
 
     /**
-     * Sets the user's username
+     * Sets the user's userName
      *
      * @param lastName
      */
@@ -155,7 +155,7 @@ public class User {
     }
 
     /**
-     * Sets the user's username
+     * Sets the user's userName
      *
      * @param gender
      */
@@ -173,7 +173,7 @@ public class User {
     }
 
     /**
-     * Sets the user's username
+     * Sets the user's userName
      *
      * @param personID
      */
@@ -194,7 +194,7 @@ public class User {
 
         User user = (User) o;
 
-        if (!getUsername().equals(user.getUsername())) return false;
+        if (!getUserName().equals(user.getUserName())) return false;
         if (!getPassword().equals(user.getPassword())) return false;
         if (!getEmail().equals(user.getEmail())) return false;
         if (!getFirstName().equals(user.getFirstName())) return false;
@@ -210,7 +210,7 @@ public class User {
      */
     @Override
     public int hashCode() {
-        int result = getUsername().hashCode();
+        int result = getUserName().hashCode();
         result = 31 * result + getPassword().hashCode();
         result = 31 * result + getEmail().hashCode();
         result = 31 * result + getFirstName().hashCode();
@@ -228,7 +228,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "username='" + username + '\'' +
+                "userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", firstName='" + firstName + '\'' +
