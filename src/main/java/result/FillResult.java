@@ -30,4 +30,8 @@ public class FillResult {
         this.numPersons = numPersons;
         this.numEvents = numEvents;
     }
+
+    public FillResult(String message) {
+        this.message = message;
+    }
 }
