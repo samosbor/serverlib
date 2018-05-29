@@ -1,5 +1,8 @@
 package service;
 
+import dao.AuthorizationToken;
+import dao.Person;
+import dao.User;
 import result.PersonIDResult;
 
 /**
@@ -8,20 +11,9 @@ import result.PersonIDResult;
 
 public class PersonID {
     /**
-     * The person ID passed in from the URL
-     */
-    String personID;
-    /**
-     * The Auth token given in the URL
-     */
-    String token;
-
-    /**
      * The constructor for the personID service object
      */
-    public PersonID(String personID, String token) {
-        this.personID = personID;
-        this.token = token;
+    public PersonID() {
     }
 
     /**
@@ -29,7 +21,30 @@ public class PersonID {
      *
      * @return a PersonIDResult result object
      */
-    public PersonIDResult getPerson(model.AuthorizationToken myToken) {
-        return null;
+    public PersonIDResult getPerson(String token, String personID) {
+        dao.AuthorizationToken aDao = new dao.AuthorizationToken();
+        dao.Person pDao = new Person();
+        dao.User uDao = new User();
+        String message;
+        PersonIDResult result;
+        if(aDao.getToken(token) != null) {
+            String authUser = aDao.getToken(token).getUser();
+            if(pDao.getPerson(personID)!= null){
+                model.Person outPerson = pDao.getPerson(personID);
+                if(outPerson.getDescendant().equals(authUser)){
+                    result = new PersonIDResult(outPerson);
+                }else{
+                    message = "Person doesn't belong to user";
+                    result = new PersonIDResult(message);
+                }
+            }else{
+                message = "Invalid personID";
+                result = new PersonIDResult(message);
+            }
+        }else{
+            message = "Invalid auth token.";
+            result = new PersonIDResult(message);
+        }
+        return result;
     }
 }

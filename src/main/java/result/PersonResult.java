@@ -10,6 +10,8 @@ public class PersonResult {
      */
     model.Person[] data;
 
+    String message;
+
     /**
      * The constructor for the person result object
      *
@@ -17,6 +19,10 @@ public class PersonResult {
      */
     public PersonResult(model.Person[] data) {
         this.data = data;
+    }
+
+    public PersonResult(String message) {
+        this.message = message;
     }
 
     public model.Person[] getData() {

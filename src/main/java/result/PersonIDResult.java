@@ -21,8 +21,11 @@ public class PersonIDResult {
      *
      * @param person
      */
-    public PersonIDResult(Person person, String message) {
+    public PersonIDResult(Person person) {
         this.person = person;
+    }
+
+    public PersonIDResult(String message) {
         this.message = message;
     }
 

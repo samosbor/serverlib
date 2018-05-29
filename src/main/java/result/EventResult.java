@@ -10,6 +10,8 @@ public class EventResult {
      */
     model.Event[] data;
 
+    String message;
+
     /**
      * The constructor for the event result object
      *
@@ -17,6 +19,10 @@ public class EventResult {
      */
     public EventResult(model.Event[] data) {
         this.data = data;
+    }
+
+    public EventResult(String message) {
+        this.message = message;
     }
 
     public model.Event[] getData() {

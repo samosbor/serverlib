@@ -1,13 +1,18 @@
 
 import java.io.*;
 import java.net.*;
+
 import com.sun.net.httpserver.*;
 
-import org.xml.sax.helpers.DefaultHandler;
-
+import dao.AuthorizationToken;
+import dao.Event;
+import dao.Person;
+import dao.User;
 import handler.ClearHandler;
+import handler.EventHandler;
 import handler.LoadHandler;
 import handler.LoginHandler;
+import handler.PersonHandler;
 import handler.RegisterHandler;
 
 public class Server {
@@ -18,6 +23,17 @@ public class Server {
         System.out.println("Initializing HTTP Server");
 
         try {
+            dao.AuthorizationToken aDao = new AuthorizationToken();
+            dao.Person pDao = new Person();
+            dao.User uDao = new User();
+            dao.Event eDao = new Event();
+            aDao.createTable();
+            pDao.createTable();
+            uDao.createTable();
+            eDao.createTable();
+
+
+
             // Create a new HttpServer object.
             // Rather than calling "new" directly, we instead create
             // the object by calling the HttpServer.create static factory method.
@@ -35,6 +51,8 @@ public class Server {
         server.createContext("/user/login", new LoginHandler());
         server.createContext("/clear", new ClearHandler());
         server.createContext("/load", new LoadHandler());
+        server.createContext("/person", new PersonHandler());
+        server.createContext("/event", new EventHandler());
         server.createContext("/", new handler.DefaultHandler());
 
         System.out.println("Server started");

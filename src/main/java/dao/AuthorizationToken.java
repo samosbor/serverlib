@@ -99,7 +99,7 @@ public class AuthorizationToken {
      * @return the AuthorizationToken object that corresponds with the token
      */
     public model.AuthorizationToken getToken(String token) {
-        String sqlGet = "SELECT * FROM User WHERE AuthorizationToken = \"" + token + "\"";
+        String sqlGet = "SELECT * FROM AuthorizationToken WHERE AuthorizationToken = \"" + token + "\"";
         try (Connection conn = this.connect();
              Statement stmt = conn.createStatement()) {
             ResultSet res = stmt.executeQuery(sqlGet);

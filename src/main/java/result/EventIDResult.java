@@ -21,8 +21,11 @@ public class EventIDResult {
      *
      * @param event
      */
-    public EventIDResult(Event event, String message) {
+    public EventIDResult(Event event) {
         this.event = event;
+    }
+
+    public EventIDResult(String message) {
         this.message = message;
     }
 

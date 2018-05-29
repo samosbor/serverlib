@@ -30,6 +30,12 @@ public class Load {
         dao.Person pDao = new Person();
         dao.User uDao = new User();
         dao.Event eDao = new Event();
+        aDao.clearTable();
+        pDao.clearTable();
+        uDao.clearTable();
+        eDao.clearTable();
+
+
         String message;
         LoadResult result;
         int numUsers = 0;
@@ -52,4 +58,5 @@ public class Load {
         result = new LoadResult(message,numUsers, numPersons, numEvents);
         return result;
     }
+
 }

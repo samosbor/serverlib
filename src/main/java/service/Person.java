@@ -1,5 +1,9 @@
 package service;
 
+import java.util.ArrayList;
+
+import dao.User;
+import result.PersonIDResult;
 import result.PersonResult;
 
 /**
@@ -7,16 +11,11 @@ import result.PersonResult;
  */
 
 public class Person {
-    /**
-     * The Auth token given in the URL
-     */
-    String token;
 
     /**
      * The constructor for the person service object
      */
-    public Person(String token) {
-        this.token = token;
+    public Person() {
     }
 
     /**
@@ -25,7 +24,19 @@ public class Person {
      *
      * @return a person result object
      */
-    public PersonResult person(model.AuthorizationToken myToken) {
-        return null;
+    public PersonResult person(String token) {
+        dao.AuthorizationToken aDao = new dao.AuthorizationToken();
+        dao.Person pDao = new dao.Person();
+        String message;
+        PersonResult result;
+        if(aDao.getToken(token) != null) {
+            ArrayList<model.Person> list = pDao.getAllFamily(aDao.getToken(token));
+            model.Person[] array = list.toArray(new model.Person[0]);
+            result = new PersonResult(array);
+        }else{
+            message = "Invalid auth token.";
+            result = new PersonResult(message);
+        }
+        return result;
     }
 }

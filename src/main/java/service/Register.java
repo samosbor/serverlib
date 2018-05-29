@@ -20,6 +20,10 @@ public class Register {
      * @return the result object which will contain pass or fail response
      */
     public RegisterResult register(RegisterRequest request) {
+        if(validate(request) != null){
+            return new RegisterResult(validate(request));
+        }
+
         dao.User userDao = new dao.User();
         userDao.createTable();
         dao.Person personDao = new dao.Person();
@@ -48,6 +52,32 @@ public class Register {
 
 
         return result;
+    }
+
+    private String validate(RegisterRequest request){
+        if(request.getUsername() == null || request.getUsername() == ""){
+            return "No userName given";
+        }
+        if(request.getPassword() == null|| request.getPassword() == ""){
+            return "No password given";
+        }
+        if(request.getEmail() == null|| request.getEmail() == ""){
+            return "No email given";
+        }
+        if(request.getFirstName() == null|| request.getFirstName() == ""){
+            return "No firstName given";
+        }
+        if(request.getLastName() == null|| request.getLastName() == ""){
+            return "No lastName given";
+        }
+        if(request.getGender() == null|| request.getGender() == ""){
+            return "No gender given";
+        }
+        if(!request.getGender().equals("m") && !request.getGender().equals("f")){
+            return "That gender is incorrect";
+        }
+
+        return null;
     }
 
 }

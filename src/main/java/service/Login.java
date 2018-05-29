@@ -25,6 +25,10 @@ public class Login {
      * @return the login object which will contain pass or fail response
      */
     public LoginResult login(LoginRequest request) {
+        if(validate(request) != null){
+            return new LoginResult(validate(request));
+        }
+
         dao.User userDao = new dao.User();
         userDao.createTable();
         dao.Person personDao = new dao.Person();
@@ -54,5 +58,16 @@ public class Login {
 
         }
         return result;
+    }
+
+
+    private String validate(LoginRequest request) {
+        if (request.getUsername() == null || request.getUsername() == "") {
+            return "No userName given";
+        }
+        if (request.getPassword() == null || request.getPassword() == "") {
+            return "No password given";
+        }
+        return null;
     }
 }
