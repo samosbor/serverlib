@@ -8,8 +8,8 @@ public class AuthorizationToken {
     /**
      * An authorization token
      */
-    String token;
-    String user;
+    private String token;
+    private  String user;
 
 
 

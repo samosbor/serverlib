@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 /**
  * Created by samosbor on 5/16/18.
  */
@@ -8,31 +10,31 @@ public class User {
     /**
      * A user's userName
      */
-    String userName;
+    private String userName;
     /**
      * A user's password
      */
-    String password;
+    private String password;
     /**
      * A user's email address
      */
-    String email;
+    private String email;
     /**
      * A user's first name
      */
-    String firstName;
+    private String firstName;
     /**
      * A user's last name
      */
-    String lastName;
+    private String lastName;
     /**
      * A user's gender. Can only be 'm' or 'f'
      */
-    String gender;
+    private String gender;
     /**
      * A user's unique ID
      */
-    String personID;
+    private String personID;
 
     /**
      * A User's constructor. Must have all values not null.
@@ -190,17 +192,15 @@ public class User {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof User)) return false;
-
+        if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-
-        if (!getUserName().equals(user.getUserName())) return false;
-        if (!getPassword().equals(user.getPassword())) return false;
-        if (!getEmail().equals(user.getEmail())) return false;
-        if (!getFirstName().equals(user.getFirstName())) return false;
-        if (!getLastName().equals(user.getLastName())) return false;
-        if (!getGender().equals(user.getGender())) return false;
-        return getPersonID().equals(user.getPersonID());
+        return Objects.equals(userName, user.userName) &&
+                Objects.equals(password, user.password) &&
+                Objects.equals(email, user.email) &&
+                Objects.equals(firstName, user.firstName) &&
+                Objects.equals(lastName, user.lastName) &&
+                Objects.equals(gender, user.gender) &&
+                Objects.equals(personID, user.personID);
     }
 
     /**

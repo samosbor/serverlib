@@ -9,35 +9,35 @@ public class Person {
     /**
      * A person's unique ID
      */
-    String personID;
+    private String personID;
     /**
      * The user to which this person belongs
      */
-    String descendant;
+    private  String descendant;
     /**
      * A person's first name
      */
-    String firstName;
+    private String firstName;
     /**
      * A person's last name
      */
-    String lastName;
+    private String lastName;
     /**
      * A person's gender. Can only be 'm' or 'f'
      */
-    String gender;
+    private String gender;
     /**
      * The ID of person's father (possibly null)
      */
-    String father;
+    private String father;
     /**
      * The ID of person's mother (possibly null)
      */
-    String mother;
+    private String mother;
     /**
      * The ID of person's spouse (possibly null)
      */
-    String spouse;
+    private String spouse;
 
     /**
      * Constructor for a person. Father, mother, and spouse could be null. Other params must not be null.

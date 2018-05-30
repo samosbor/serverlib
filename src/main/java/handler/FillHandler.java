@@ -41,7 +41,11 @@ public class FillHandler implements HttpHandler {
                 String url = exchange.getRequestURI().toString();
                 String[] array = url.split("/");
 
+
                 Gson gson = new Gson();
+
+
+
                 Fill fillService = new Fill();
                 String jsonString;
                 String user = array[2];

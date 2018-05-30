@@ -17,29 +17,6 @@ public class Person {
     public Person() {
     }
 
-    public static void main(String[] args){
-        dao.User userDao = new User();
-        dao.AuthorizationToken aDao= new dao.AuthorizationToken();
-        userDao.createTable();
-        aDao.createTable();
-        dao.Person myPersonDao = new dao.Person();
-        myPersonDao.createTable();
-        model.Person son = new model.Person("son", "sam", "sam", "osborne", "m","rod", "nan", "kaitlyn");
-        model.Person mom = new model.Person("mom", "sam", "nan", "osborne", "f","duane", "juanita", "dad");
-        model.Person dad = new model.Person("dad", "sam", "rod", "osborne", "m","grandpa", "grandma", "mom");
-        model.Person grandpa = new model.Person("grandpa", "sam", "manuel", "osborne", "m","1", "2", "grandma");
-        model.Person grandma = new model.Person("grandma", "sam", "nancy", "osborne", "f","3", "4", "grandpa");
-
-        myPersonDao.addPerson(son);
-        myPersonDao.addPerson(mom);
-        myPersonDao.addPerson(dad);
-        myPersonDao.addPerson(grandma);
-        myPersonDao.addPerson(grandpa);
-        model.AuthorizationToken samToken = new model.AuthorizationToken("randomstring", "sam");
-        ArrayList<model.Person> allfamlist = myPersonDao.getAllFamily(samToken);
-        System.out.println(allfamlist.toString());
-    }
-
     /**
      * Creates an empty person table
      */
@@ -169,16 +146,61 @@ public class Person {
     }
 
     public ArrayList<model.Person> getAllFamily(model.AuthorizationToken token){
-        String currentUsername = token.getUser();
-        dao.User userDao = new dao.User();
-        model.User currentUser = userDao.getUser(currentUsername);
-        String currentPersonId = currentUser.getPersonID();
-        model.Person currentPerson = getPersonFromAT(token);
-
-        ArrayList<model.Person> initialList = new ArrayList<>();
-        return allFamilyDFS(currentPerson, initialList);
-
+        ArrayList<model.Person> outList = new ArrayList<>();
+        String sqlGet = "SELECT PersonID FROM Person WHERE Descendant = \"" + token.getUser() + "\"";
+        try (Connection conn = this.connect();
+             Statement stmt = conn.createStatement()) {
+            ResultSet res = stmt.executeQuery(sqlGet);
+            while(res.next()){
+                String personID = res.getString("PersonID");
+                model.Person person = this.getPerson(personID);
+                outList.add(person);
+            }
+            conn.close();
+            return outList;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
+
+    public ArrayList<model.Person> getAllFamily(model.Person currentPerson){
+        ArrayList<model.Person> outList = new ArrayList<>();
+        String sqlGet = "SELECT PersonID FROM Person WHERE Descendant = \"" + currentPerson.getDescendant() + "\"";
+        try (Connection conn = this.connect();
+             Statement stmt = conn.createStatement()) {
+            ResultSet res = stmt.executeQuery(sqlGet);
+            while(res.next()){
+                String personID = res.getString("PersonID");
+                model.Person person = this.getPerson(personID);
+                outList.add(person);
+            }
+            conn.close();
+            return outList;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+    public ArrayList<model.Person> getAllFamily(String currentUsername){
+        ArrayList<model.Person> outList = new ArrayList<>();
+        String sqlGet = "SELECT PersonID FROM Person WHERE Descendant = \"" + currentUsername + "\"";
+        try (Connection conn = this.connect();
+             Statement stmt = conn.createStatement()) {
+            ResultSet res = stmt.executeQuery(sqlGet);
+            while(res.next()){
+                String personID = res.getString("PersonID");
+                model.Person person = this.getPerson(personID);
+                outList.add(person);
+            }
+            conn.close();
+            return outList;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
 
     private model.Person getPersonFromAT(model.AuthorizationToken token){
         String currentUsername = token.getUser();

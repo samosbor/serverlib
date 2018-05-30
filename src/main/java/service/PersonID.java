@@ -34,7 +34,7 @@ public class PersonID {
                 if(outPerson.getDescendant().equals(authUser)){
                     result = new PersonIDResult(outPerson);
                 }else{
-                    message = "Person doesn't belong to user";
+                    message = "Person does not belong to user";
                     result = new PersonIDResult(message);
                 }
             }else{

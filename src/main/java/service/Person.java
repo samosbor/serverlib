@@ -31,6 +31,7 @@ public class Person {
         PersonResult result;
         if(aDao.getToken(token) != null) {
             ArrayList<model.Person> list = pDao.getAllFamily(aDao.getToken(token));
+            System.out.println(list.size());
             model.Person[] array = list.toArray(new model.Person[0]);
             result = new PersonResult(array);
         }else{

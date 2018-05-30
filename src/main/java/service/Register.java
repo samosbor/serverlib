@@ -47,10 +47,12 @@ public class Register {
         else{
             String message = "That username is taken";
             result = new RegisterResult(message);
+            return result;
         }
 
 
-
+        Fill fillService = new Fill();
+        fillService.fill(request.getUsername(), 4);
         return result;
     }
 

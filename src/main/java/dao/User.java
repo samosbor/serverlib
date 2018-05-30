@@ -16,20 +16,6 @@ public class User {
     public User() {
     }
 
-    public static void main(String[] args) {
-        User myUserDao = new dao.User();
-        model.User sampleUser2 = new model.User("samuel", "toast", "samgmailcom", "sam", "osborne", "m", "do");
-        model.User sampleUser = new model.User("sam", "toast", "samgmailcom", "sam", "osborne", "m", "do");
-        myUserDao.clearTable();
-        myUserDao.createTable();
-        myUserDao.addUser(sampleUser);
-        myUserDao.addUser(sampleUser2);
-        myUserDao.removeUser(sampleUser);
-        myUserDao.getUser("samuel");
-        myUserDao.getUser("samuel");
-
-    }
-
     /**
      * Creates an empty user table
      */

@@ -10,6 +10,7 @@ import dao.Person;
 import dao.User;
 import handler.ClearHandler;
 import handler.EventHandler;
+import handler.FillHandler;
 import handler.LoadHandler;
 import handler.LoginHandler;
 import handler.PersonHandler;
@@ -34,6 +35,8 @@ public class Server {
 
 
 
+
+
             // Create a new HttpServer object.
             // Rather than calling "new" directly, we instead create
             // the object by calling the HttpServer.create static factory method.
@@ -53,6 +56,7 @@ public class Server {
         server.createContext("/load", new LoadHandler());
         server.createContext("/person", new PersonHandler());
         server.createContext("/event", new EventHandler());
+        server.createContext("/fill", new FillHandler());
         server.createContext("/", new handler.DefaultHandler());
 
         System.out.println("Server started");

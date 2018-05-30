@@ -9,39 +9,39 @@ public class Event {
     /**
      * Unique identifier for this event
      */
-    String eventID;
+    private String eventID;
     /**
      * The user to which this personID belongs
      */
-    String descendant;
+    private  String descendant;
     /**
      * ID of the personID to which this event belongs
      */
-    String personID;
+    private String personID;
     /**
      * Latitude of the event's location
      */
-    Double latitude;
+    private Double latitude;
     /**
      * Longitude of the event's location
      */
-    Double longitude;
+    private  Double longitude;
     /**
      * Country in which the event occurred
      */
-    String country;
+    private String country;
     /**
      * City in which event occurred
      */
-    String city;
+    private String city;
     /**
      * Type of event
      */
-    String eventType;
+    private String eventType;
     /**
      * Year in which event occurred
      */
-    int year;
+    private int year;
 
     /**
      * Constructor for the event

@@ -37,7 +37,7 @@ public class Login {
         ATDao.createTable();
         LoginResult result;
 
-        if(userDao.getUser(request.getUsername()) == null) {
+        if(userDao.getUser(request.getUsername()) == null || request.getUsername().equals("username")) {
             String message = "That username is not valid";
             result = new LoginResult(message);
         }

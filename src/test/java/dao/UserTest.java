@@ -4,8 +4,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.File;
-
 import static org.junit.Assert.*;
 
 public class UserTest {
@@ -22,24 +20,43 @@ public class UserTest {
     }
 
     @Test
-    public void createTable() {
-        myuser.createTable();
-        assertTrue(new File("mydata.db").isFile());
+    public void createTable() { myuser.createTable();
     }
 
     @Test
     public void addUser() {
+
+        myuser.addUser(sampleUser);
+        myuser.addUser(sampleUser2);
+        myuser.getUser("samuel");
+        myuser.getUser("samuel");
+        myuser.getUser("sam");
+        myuser.getUser("sam");
     }
 
     @Test
     public void removeUser() {
+        myuser.clearTable();
+        myuser.createTable();
+        myuser.addUser(sampleUser);
+        myuser.addUser(sampleUser2);
+        myuser.removeUser(sampleUser);
+        myuser.removeUser(sampleUser2);
+        assertNull(myuser.getUser("samuel"));
+        assertNull(myuser.getUser("samuel"));
     }
 
     @Test
     public void getUser() {
+        myuser.addUser(sampleUser);
+        myuser.addUser(sampleUser2);
+        myuser.getUser("samuel");
+        myuser.getUser("samuel");
+        myuser.getUser("sam");
+        myuser.getUser("sam");
     }
 
     @Test
-    public void clearTable() {
+    public void clearTable() {myuser.clearTable();
     }
 }

@@ -18,10 +18,6 @@ public class Event {
     public Event() {
     }
 
-    public static void main(String[] args){
-        Event myEventDao = new Event();
-        myEventDao.createTable();
-    }
     /**
      * Creates an empty event table
      */
@@ -161,6 +157,14 @@ public class Event {
         return allEventsDFS(currentPerson, initialList, personList);
 
     }
+    public ArrayList<model.Event> getAllEvents(model.Person currentPerson){
+
+        ArrayList<model.Event> initialList = new ArrayList<>();
+        ArrayList<model.Person> personList = new ArrayList<>();
+        return allEventsDFS(currentPerson, initialList, personList);
+
+    }
+
 
     private model.Person getPersonFromAT(model.AuthorizationToken token){
         String currentUsername = token.getUser();
@@ -201,7 +205,7 @@ public class Event {
         return list;
     }
 
-    private ArrayList<model.Event> getEvents(model.Person person){
+    public ArrayList<model.Event> getEvents(model.Person person){
         ArrayList<model.Event> outList = new ArrayList<>();
         String sqlGet = "SELECT EventID FROM Event WHERE Person = \"" + person.getPersonID() + "\"";
         try (Connection conn = this.connect();
