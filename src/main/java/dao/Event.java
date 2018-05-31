@@ -224,4 +224,23 @@ public class Event {
         return null;
     }
 
+    public ArrayList<model.Event> getAllEventsByUsername(String username){
+        ArrayList<model.Event> outList = new ArrayList<>();
+        String sqlGet = "SELECT EventID FROM Event WHERE Descendant = \"" + username + "\"";
+        try (Connection conn = this.connect();
+             Statement stmt = conn.createStatement()) {
+            ResultSet res = stmt.executeQuery(sqlGet);
+            while(res.next()){
+                String eventID = res.getString("EventID");
+                model.Event event = this.getEvent(eventID);
+                outList.add(event);
+            }
+            conn.close();
+            return outList;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
 }

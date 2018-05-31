@@ -100,6 +100,11 @@ public class Fill {
         pDao.removePerson(original);
         for(ArrayList<model.Person> element: genMap.values()){
             for(model.Person addPerson : element){
+                if(addPerson.getPersonID().equals(original.getPersonID())){
+                    Location randomloc = locations.getRandom();
+                    model.Event birth = new model.Event(UUID.randomUUID().toString(), username, original.getPersonID(), randomloc.getLatitude(), randomloc.getLongitude(), randomloc.getCountry(), randomloc.getCity(), "Birth", 1996);
+                    eDao.addEvent(birth);
+                }
                 pDao.addPerson(addPerson);
             }
         }
@@ -184,13 +189,11 @@ public class Fill {
         System.out.println("Deleting Data");
         System.out.println(family.toString());
         for(model.Person element : family){
-            if(!element.getPersonID().equals(user.getPersonID())){
-                ArrayList<model.Event> events = eDao.getEvents(element);
-                for(model.Event event : events){
-                    eDao.removeEvent(event);
-                }
-                pDao.removePerson(element);
-            }
+            pDao.removePerson(element);
+        }
+        ArrayList<model.Event> eventlist = eDao.getAllEventsByUsername(user.getDescendant());
+        for(model.Event element : eventlist){
+            eDao.removeEvent(element);
         }
     }
 
