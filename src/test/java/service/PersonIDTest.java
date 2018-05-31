@@ -6,13 +6,13 @@ import dao.User;
 import request.LoginRequest;
 import request.RegisterRequest;
 import result.LoginResult;
-import result.PersonIDResult;
 import result.PersonResult;
 import result.RegisterResult;
 
 import static org.junit.Assert.*;
 
-public class PersonTest {
+public class PersonIDTest {
+
     Register regtest = new Register();
     dao.User uDao = new User();
     RegisterRequest request = new RegisterRequest("test1", "test2", "test3", "test4", "test5", "m");
@@ -20,26 +20,12 @@ public class PersonTest {
     Person persontest = new Person();
 
     @Test
-    public void getPerson() {
+    public void person() {
         RegisterResult registerResult = regtest.register(request);
         LoginRequest loginRequest = new LoginRequest("test1", "test2");
         Login login = new Login();
-        LoginResult  loginResult = login.login(loginRequest);
-
+        LoginResult loginResult = login.login(loginRequest);
         PersonResult result = persontest.person(loginResult.getAuthToken());
         assertTrue(result.getData().length == 31);
-
-        String correctID = loginResult.getPersonID();
-        String correctAuth = loginResult.getAuthToken();
-
-        dao.Person pDao = new dao.Person();
-
-        PersonID idTest = new PersonID();
-        PersonIDResult idResult = idTest.getPerson("dne", "dne");
-        assertNull(idResult.getPerson());
-        PersonIDResult idResult2 = idTest.getPerson(correctAuth, correctID);
-        System.out.println(idResult2.getPerson());
-        assertEquals(idResult2.getPerson().getPersonID(),correctID);
-
     }
 }

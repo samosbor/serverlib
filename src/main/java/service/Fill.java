@@ -49,13 +49,22 @@ public class Fill {
         Gson gson = new Gson();
         String filePath = new File("").getAbsolutePath();
         try {
-            FileReader male = new FileReader(filePath + "\\serverlib\\json\\mnames.json");
+//            FileReader male = new FileReader(filePath + "\\serverlib\\json\\mnames.json");
+//            mnames = gson.fromJson(male, MaleNames.class);
+//            FileReader female = new FileReader(filePath + "\\serverlib\\json\\fnames.json");
+//            fnames = gson.fromJson(female, FemaleNames.class);
+//            FileReader loc = new FileReader(filePath + "\\serverlib\\json\\locations.json");
+//            locations = gson.fromJson(loc, Locations.class);
+//            FileReader last = new FileReader(filePath + "\\serverlib\\json\\snames.json");
+//            lnames = gson.fromJson(last, LastNames.class);
+
+            FileReader male = new FileReader(filePath + "\\json\\mnames.json");
             mnames = gson.fromJson(male, MaleNames.class);
-            FileReader female = new FileReader(filePath + "\\serverlib\\json\\fnames.json");
+            FileReader female = new FileReader(filePath + "\\json\\fnames.json");
             fnames = gson.fromJson(female, FemaleNames.class);
-            FileReader loc = new FileReader(filePath + "\\serverlib\\json\\locations.json");
+            FileReader loc = new FileReader(filePath + "\\json\\locations.json");
             locations = gson.fromJson(loc, Locations.class);
-            FileReader last = new FileReader(filePath + "\\serverlib\\json\\snames.json");
+            FileReader last = new FileReader(filePath + "\\json\\snames.json");
             lnames = gson.fromJson(last, LastNames.class);
 
         } catch (FileNotFoundException e) {

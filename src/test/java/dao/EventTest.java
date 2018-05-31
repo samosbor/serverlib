@@ -127,7 +127,7 @@ public class EventTest {
         myEventDao.addEvent(grandmaEvent);
         myEventDao.addEvent(grandpaEvent);
 
-        ArrayList<model.Event> allEventList = myEventDao.getAllEvents(samToken);
+        ArrayList<model.Event> allEventList = myEventDao.getAllEventsByUsername("sam");
         System.out.println(allEventList.toString());
     }
 }
