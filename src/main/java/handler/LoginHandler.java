@@ -32,7 +32,6 @@ public class LoginHandler implements HttpHandler{
                 InputStream reqBody = exchange.getRequestBody();
                 // Read JSON string from the input stream
                 String reqData = readString(reqBody);
-
                 Gson gson = new Gson();
                 LoginRequest request = gson.fromJson(reqData, LoginRequest.class);
                 Login loginService = new Login();
@@ -41,7 +40,7 @@ public class LoginHandler implements HttpHandler{
 
 
                 // Display/log the request JSON data
-                System.out.println(reqData);
+                System.out.println(jsonString);
 
 
 
